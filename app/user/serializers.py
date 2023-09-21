@@ -1,5 +1,5 @@
 """
-Serialisers for the user API view
+Serializers for the user API view
 """
 
 from django.contrib.auth import (
@@ -9,10 +9,10 @@ from django.contrib.auth import (
 
 from django.utils.translation import gettext as _
 
-from rest_framework import serializers as serialisers
+from rest_framework import serializers
 
-class UserSerialiser(serialisers.ModelSerializer):
-    """Serialiser for the user object."""
+class UserSerializer(serializers.ModelSerializer):
+    """Serializer for the user object."""
 
     class Meta:
         model = get_user_model()
@@ -36,10 +36,10 @@ class UserSerialiser(serialisers.ModelSerializer):
 
         return user
 
-class AuthTokenSerialiser(serialisers.Serializer):
-    """Serialiser for the user auth token"""
-    email = serialisers.EmailField()
-    password = serialisers.CharField(
+class AuthTokenSerializer(serializers.Serializer):
+    """Serializer for the user auth token"""
+    email = serializers.EmailField()
+    password = serializers.CharField(
         style={'input_type': 'password'},
         trim_whitespace=False,
     )
@@ -57,7 +57,7 @@ class AuthTokenSerialiser(serialisers.Serializer):
 
         if not user:
             msg = _('Unable to authenticate with provided credentials.')
-            raise serialisers.ValidationError(msg, code='authorization')
+            raise serializers.ValidationError(msg, code='authorization')
 
         attrs['user'] = user
         return attrs

@@ -11,24 +11,24 @@ from rest_framework import (
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
 
-from user.serialisers import (
-    UserSerialiser,
-    AuthTokenSerialiser
+from user.serializers import (
+    UserSerializer,
+    AuthTokenSerializer
 )
 
 class CreateUserView(generics.CreateAPIView):
     """Create a new user in the system."""
-    serializer_class = UserSerialiser
+    serializer_class = UserSerializer
 
 class CreateTokenView(ObtainAuthToken):
     """Create a new auth token for user."""
-    serializer_class = AuthTokenSerialiser
+    serializer_class = AuthTokenSerializer
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
 
 class ManageUserView(generics.RetrieveUpdateAPIView):
     """Manage an authenticated user."""
 
-    serializer_class = UserSerialiser
+    serializer_class = UserSerializer
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
