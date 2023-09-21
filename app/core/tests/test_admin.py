@@ -6,6 +6,7 @@ from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
+
 class AdminSiteTests(TestCase):
     """Tests for Django admin."""
 
@@ -33,7 +34,6 @@ class AdminSiteTests(TestCase):
 
         self.assertContains(res, self.user.name)
         self.assertContains(res, self.user.email)
-
 
     def test_edit_user_page(self):
         """Test the user edit page works."""
