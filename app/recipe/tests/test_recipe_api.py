@@ -400,7 +400,7 @@ class ImageUploadTests(TestCase):
 
     def setUp(self):
         self.client = APIClient()
-        self.user = create_user(email='user@example.com', password='testpass123')
+        self.user = create_user(email='user@example.com', password='testpass')
         self.client.force_authenticate(self.user)
         self.recipe = create_recipe(user=self.user)
 
